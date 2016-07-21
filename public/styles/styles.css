@@ -6,3 +6,11 @@ h1 {
 .col-md-12 {
   text-align: center;
 }
+
+.jumbotron {
+  background: no-repeat url("http://i.imgur.com/WL3G43r.jpg") center bottom;
+  font-family: 'InterstateBoldCondensed', Helvetica, Arial, sans-serif;
+  color: rgba(255, 255, 250, 1);
+  text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px gray;
+  text-transform: uppercase;
+}
