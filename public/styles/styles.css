@@ -1,4 +1,8 @@
 h1 {
   font: 100px;
-  background: blue;
+  text-align: center;
+}
+
+.col-md-12 {
+  text-align: center;
 }
