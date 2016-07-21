@@ -1,0 +1,17 @@
+{
+  "name": "project_1_applied",
+  "description": "Save jobs onto this web app to keep track of which positions have been applied to.",
+  "main": "server.js",
+  "authors": [
+    "daniel oh"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/danieloh91/Project_1_Applied",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
