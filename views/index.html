@@ -194,16 +194,24 @@
         </div>
       </div>
     </section>
-
-    <div class="col-md-8 col-md-offset-2">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title">{{Company}}</h3>
+    <div id="job-postings">
+      <script id="job-template" type="text/x-handlebars-template">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title" data-company-id="{{_id}}">{{company_name}}</h3>
+            </div>
+            <div class="panel-body">
+              <span data-position-id="{{_id}}">{{position_name}}</span>
+              <span class='location'>{{location}}</span>
+              <div class="hidden">
+                <span class='referral'>{{referral}}</span>
+                <span class='job-url'>{{job_url}}</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="panel-body">
-          {{Position}}
-        </div>
-      </div>
+      </script>
     </div>
     <footer>
       <div class="container">
