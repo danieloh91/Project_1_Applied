@@ -2,6 +2,7 @@ var db = require('../models');
 
 function index(req, res) {
   db.Position.find({}, function(err, position) {
+    console.log(db.Position);
     if (err) {
       res.sendStatus(500);
     }

@@ -5,7 +5,7 @@ var mongoose = require("mongoose"),
       location: String,
       referral: Boolean,
       job_url: String,
-      _company: Company._id
+      // _company: Company._id
     });
 
 var Position = mongoose.model('Position', PositionSchema);
