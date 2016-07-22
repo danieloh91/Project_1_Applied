@@ -40,7 +40,7 @@ function destroy(req, res) {
 function update(req, res) {
   var positionId = req.params.positionId;
   var body = req.body;
-  db.Position.findByIdAndUpdate(positionId, body, function(err, succ) {
+  db.Position.findByIdAndUpdate(positionId, body, {new: true}, function(err, succ) {
     if (err) {
       console.log(err);
     }
