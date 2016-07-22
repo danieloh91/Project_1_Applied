@@ -24,6 +24,8 @@ app.get('/api/positions/:positionId', controllers.positions.show);
 app.post('/api/positions', controllers.positions.create);
 
 app.delete('/api/positions/:positionId', controllers.positions.destroy);
+
+app.put('/api/positions/:positionId', controllers.positions.update);
 //
 // app.get('/api/companies', controllers.positionsCompanies.index);
 //
