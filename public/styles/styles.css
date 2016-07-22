@@ -8,9 +8,16 @@ h1 {
 }
 
 .jumbotron {
-  background: no-repeat url("http://i.imgur.com/WL3G43r.jpg") center bottom;
+  /*background: no-repeat url("http://i.imgur.com/WPSfK6q.jpg") center top;*/
+  background: no-repeat url("https://static.pexels.com/photos/7974/pexels-photo.jpg") center bottom;
+  background-size: cover;
   font-family: 'InterstateBoldCondensed', Helvetica, Arial, sans-serif;
   color: rgba(255, 255, 250, 1);
   text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px gray;
   text-transform: uppercase;
+  width: 1080px;
+  margin-top: 0px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 110px 0;
 }
