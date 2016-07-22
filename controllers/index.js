@@ -1,3 +1,3 @@
-module.exports.api = require('./api/apiController');
-module.exports.positions = require('./api/positionsController');
-module.exports.positionsCompanies = require('./api/positionsCompanies');
+module.exports.api = require('./apiController');
+module.exports.positions = require('./positionsController');
+module.exports.positionsCompanies = require('./positionsCompaniesController');
