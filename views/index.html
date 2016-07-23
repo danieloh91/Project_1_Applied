@@ -127,14 +127,14 @@
             </fieldset>
             <ul class="pager">
               <li class="previous"><a href="#">&larr; Previous</a></li>
-              <li class="next"><a href="#">Save</a></li>
+              <button type="submit" class="btn btn-primary submit">Submit</button>
             </ul>
           </form>
         </div>
       </div>
     </section>
 
-    <section id='addon-job-form' class="container">
+    <!-- <section id='addon-job-form' class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
           <form class="form-horizontal">
@@ -193,7 +193,8 @@
           </form>
         </div>
       </div>
-    </section>
+    </section> -->
+
     <div id="job-postings">
       <script id="job-template" type="text/x-handlebars-template">
         <div class="col-md-8 col-md-offset-2">
@@ -201,14 +202,16 @@
             <div class="panel-heading">
               <h3 class="panel-title" data-company-id="{{_id}}">{{company_name}}</h3>
             </div>
-            <div class="panel-body">
-              <span data-position-id="{{_id}}">{{position_name}}</span>
-              <span class='location'>{{location}}</span>
-              <div class="hidden">
-                <span class='referral'>{{referral}}</span>
-                <span class='job-url'>{{job_url}}</span>
+            <!-- <div class="button to toggle the hidden"> -->
+              <div class="panel-body">
+                <span data-position-id="{{_id}}">{{position_name}}</span>
+                <span class='location'>{{location}}</span>
+                <div class="hidden">
+                  <span class='referral'>{{referral}}</span>
+                  <span class='job-url'>{{job_url}}</span>
+                </div>
               </div>
-            </div>
+            <!-- </div> -->
           </div>
         </div>
       </script>
