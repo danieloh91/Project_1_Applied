@@ -1,5 +1,8 @@
 var db = require("./models");
 
+// form that takes position name, location, referral, job_url, company's name
+// 
+
 var positionsList = [
   {
     position_name: 'Software Engineer - Release',

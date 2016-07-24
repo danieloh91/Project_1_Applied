@@ -10,8 +10,9 @@ function index(req, res) {
 }
 
 function create(req, res) {
+  console.log('starting create method');
+  console.log(res);
   db.Position.create(req.body, function(err, succ) {
-    console.log('printing request body:',req.body);
     if (err) {
       console.log(err);
     }

@@ -17,10 +17,9 @@ $(document).ready(function() {
   });
 
   //add job post
-  $('.form-horizontal').on("submit", function(e) {
+  $('#new-job-form').on("submit", function(e) {
     console.log('calling on submit');
     e.preventDefault();
-    debugger;
     var formData = $(this).serialize();
     console.log('retreiving formData', formData);
     $.post('/api/positions', formData, function(position) {
