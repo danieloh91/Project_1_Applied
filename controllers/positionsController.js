@@ -10,13 +10,28 @@ function index(req, res) {
 }
 
 function create(req, res) {
-  console.log('starting create method');
-  console.log(res);
-  db.Position.create(req.body, function(err, succ) {
-    if (err) {
-      console.log(err);
+  db.Company.find({company_name: req.body.company}, function(err, companies){
+    if (err) res.json(err);
+    else {
+      var company = companies[0];
+      db.Position.create(req.body, function(err, position){
+        // res.json(company);
+        // ^^^ giving an array with company object.
+        // THIS IS NOT WHAT WE WANT.
+        // if you validate that you can never have repeat company, then you can fix this by doing this vvv
+
+        if (err) res.json(err);
+        else {
+          position.company_id = company._id;
+          position.save();
+          // ^^^ still wrong.
+
+          company._positions.push(position._id);
+          company.save();
+          res.json(position);
+        }
+      });
     }
-    res.json(succ);
   });
 }
 

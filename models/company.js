@@ -3,7 +3,8 @@ var mongoose = require("mongoose"),
     CompanySchema = new Schema({
       company_name: String,
       hq: String,
-      founded: Number
+      founded: Number,
+      _positions: [{type: mongoose.Schema.Types.ObjectId, ref: 'Position'}]
     });
 
 var Company = mongoose.model('Company', CompanySchema);
