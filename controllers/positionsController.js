@@ -11,6 +11,7 @@ function index(req, res) {
 
 function create(req, res) {
   db.Position.create(req.body, function(err, succ) {
+    console.log('printing request body:',req.body);
     if (err) {
       console.log(err);
     }
