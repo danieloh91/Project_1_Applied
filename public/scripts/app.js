@@ -32,14 +32,23 @@ $(document).ready(function() {
   });
 
   //edit job post
-  $jobsList.on('click', '.edit-post', function(e) {
+  $jobsList.on('click', '.update-post', function(e) {
     e.preventDefault();
     console.log('it clicks');
     var id= $(this).closest('.post').data('position-id');
     console.log('id', id);
-
+    $('.collapse').show();
+    $('#update-post').on("submit", function(e) {
+      e.preventDefault();
+      $.ajax({
+        method: 'PUT',
+        url: '/api/positions/' + id,
+        data: $(this).serialize(),
+        success: handleEditPositionSuccess
+      });
+      $('.collapse').hide();
+    });
   });
-
 
   //delete job post
   $jobsList.on('click', '.delete-post', function(e) {
@@ -55,21 +64,21 @@ $(document).ready(function() {
 
 });
 
+function handleEditPositionSuccess(data) {
+  var editedPositionId = data._id;
+  $.get('/api/positions/' + editedPositionId, function(data) {
+    $('div[data-position-id=' + editedPositionId + ']').remove();
+    render(data);
+  });
+}
+
 function handleDeletePositionSuccess(data) {
   var deletedPositionId = data._id;
   console.log(data._id);
   $('div[data-position-id=' + deletedPositionId + ']').remove();
 }
 
-
-// function render() {
-//   $jobsList.empty();
-//   var html = jobsTemplate({positions: allPositions});
-//   $jobsList.prepend(html);
-// }
-
 function render(position) {
-  // $jobsList.empty();
   var html = jobsTemplate(position);
   $jobsList.prepend(html);
 }

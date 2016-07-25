@@ -68,8 +68,19 @@ function update(req, res) {
   db.Position.findByIdAndUpdate(positionId, body, {new: true}, function(err, succ) {
     if (err) {
       console.log(err);
+    } else {
+      succ.position_name = req.body.position_name;
+      succ.location = req.body.location;
+      succ.referral = req.body.referral;
+      succ.job_url = req.body.job_url;
+      succ.save(function (err, succ){
+        if (err) {
+          console.log(err);
+        } else {
+          res.json(succ);
+        }
+      });
     }
-    res.json(succ);
   });
 }
 

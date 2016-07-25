@@ -216,7 +216,7 @@
                   <span class="position-id">Position Id: {{_id}}</span>
                   <a target="_blank" href="{{job_url}}">Job Posting Link</a>
                   <div class="pull-right">
-                    <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-\{{_id}}">
+                    <a href="javascript:void(0)" class="update-post" data-toggle="collapse" data-id={{_id}}>
                       <span class="glyphicon glyphicon-pencil"></span>
                     </a>
                     <a href="javascript:void(0)" class="delete-post" data-id={{_id}}>
@@ -224,27 +224,27 @@
                     </a>
                   </div>
                   <!-- edit form -->
-                  <div class="collapse" id="update-\{{_id}}">
+                  <div class="collapse" data-position-id="{{_id}}">
                   <br>
-                  <form class="form-inline update-post">
+                  <form class="form-inline" id="update-post">
                     <div class="form-group">
                       <label for="inputPosition" class="col-md-4 control-label">Position</label>
                       <div class="col-md-4">
-                        <input type="text" class="form-control" id="inputPosition" name="position_name" placeholder="Title" autofocus="" value="\{{position_name}}">
+                        <input type="text" class="form-control" id="inputPosition" name="position_name" placeholder="Title" autofocus="" value="{{position_name}}">
                       </div>
                     </div>
 
                     <div class="form-group">
                       <label for="inputLocation" class="col-md-4 control-label">Job Location</label>
                       <div class="col-md-4">
-                        <input type="text" class="form-control" id="inputLocation" name="location" placeholder="City, State" autofocus="" value="\{{location}}">
+                        <input type="text" class="form-control" id="inputLocation" name="location" placeholder="City, State" autofocus="" value="{{location}}">
                       </div>
                     </div>
 
                     <div class="form-group">
                       <label for="inputURL" class="col-md-4 control-label">Job Posting</label>
                       <div class="col-md-4">
-                        <input type="text" class="form-control" id="inputURL" name="job_url" placeholder="Paste URL" value="\{{job_url}}">
+                        <input type="text" class="form-control" id="inputURL" name="job_url" placeholder="Paste URL" value="{{job_url}}">
                       </div>
                     </div>
 
@@ -253,7 +253,7 @@
                       <div class="col-md-4">
                         <div class="radio">
                           <label>
-                            <input type="radio" name="referral" id="yes" value="true" checked="" value="\{{referral}}">
+                            <input type="radio" name="referral" id="yes" value="true" checked="" value="{{referral}}">
                             Yes
                           </label>
                         </div>
