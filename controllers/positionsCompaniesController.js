@@ -1,12 +1,12 @@
 var db = require('../models');
 
 function index(req, res) {
-  db.Company.find({}, function(err, succ) {
-    if (err) {
-      console.log(err);
-    }
-    res.json(succ);
-  });
+  db.Company.find({})
+    .populate('_positions')
+    .exec(function(err, succ){
+      console.log(succ);
+      res.json(succ);
+    });
 }
 
 function show(req, res) {

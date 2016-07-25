@@ -1,11 +1,12 @@
 var db = require('../models');
 
 function index(req, res) {
-  db.Position.find({}, function(err, succ) {
-    if (err) {
-      console.log(err);
-    }
-    res.json(succ);
+  db.Position.find({})
+    .populate('company_id')
+    .exec(function (err, company) {
+        if (err) return handleError(err);
+        console.log('Gigantic Position with attached Company: ', company);
+        res.json(company);
   });
 }
 
@@ -18,6 +19,9 @@ function createPosition(res, err, company, position) {
     company.save();
     res.json(position);
   }
+
+
+
 }
 
 function create(req, res) {
@@ -69,17 +73,18 @@ function update(req, res) {
     if (err) {
       console.log(err);
     } else {
-      succ.position_name = req.body.position_name;
-      succ.location = req.body.location;
-      succ.referral = req.body.referral;
-      succ.job_url = req.body.job_url;
-      succ.save(function (err, succ){
-        if (err) {
-          console.log(err);
-        } else {
-          res.json(succ);
-        }
-      });
+      // succ.position_name = req.body.position_name;
+      // succ.location = req.body.location;
+      // succ.referral = req.body.referral;
+      // succ.job_url = req.body.job_url;
+      // succ.save(function (err, succ){
+      //   if (err) {
+      //     console.log(err);
+      //   } else {
+      //     res.json(succ);
+      //   }
+      // });
+      res.json(succ);
     }
   });
 }

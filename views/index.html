@@ -136,11 +136,7 @@
                 <label for="inputExistingCompany" class="col-md-4 control-label">Company</label>
                 <div class="col-md-4">
                   <select class="form-control" id="select">
-                    <option>{{Company 1}}</option>
-                    <option>{{Company 2}}</option>
-                    <option>{{Company 3}}</option>
-                    <option>{{Company 4}}</option>
-                    <option>{{Company 5}}</option>
+                    <option value="{{company_name}}"></option>
                   </select>
                 </div>
               </div>
@@ -195,56 +191,57 @@
     </section>
 
     <div id="job-postings">
-      <script id="job-template" type="text/x-handlebars-template">
+      <script id="company-template" type="text/x-handlebars-template">
       <!-- {{positions}} -->
         <div class="col-md-8 col-md-offset-2">
           <div class="panel panel-primary">
             <div class="panel-heading">
               <!-- {{companies}} -->
-              <h3 class="company_name" data-company-id="">Company: {{company_name}}</h3>
+              <h3 class="company_name" data-company-id="{{_id}}">Company: {{company_name}}</h3>
               <div class="comp-info">
                 <span class="hq">HQ: {{hq}}</span>
                 <span class="hq">Founded: {{founded}}</span>
               </div>
             </div>
             <!-- <div class="button to toggle the hidden"> -->
-              <div class="panel-body post" data-position-id="{{_id}}">
-                <span class="position-name">Position: {{position_name}}</span>
-                <span class="location">Location: {{location}}</span>
+            {{#each _positions}}
+              <div class="panel-body post" data-position-id="{{this._id}}">
+                <span class="position-name">Position: {{this.position_name}}</span>
+                <span class="location">Location: {{this.location}}</span>
                 <div class="">
-                  <span class="referral">Referral: {{referral}}</span>
-                  <span class="position-id">Position Id: {{_id}}</span>
-                  <a target="_blank" href="{{job_url}}">Job Posting Link</a>
+                  <span class="referral">Referral: {{this.referral}}</span>
+                  <span class="position-id">Position Id: {{this._id}}</span>
+                  <a target="_blank" href="{{this.job_url}}">Job Posting Link</a>
                   <div class="pull-right">
-                    <a href="javascript:void(0)" class="update-post" data-toggle="collapse" data-id={{_id}}>
+                    <a href="javascript:void(0)" class="update-post" data-toggle="collapse" data-id={{this._id}}>
                       <span class="glyphicon glyphicon-pencil"></span>
                     </a>
-                    <a href="javascript:void(0)" class="delete-post" data-id={{_id}}>
+                    <a href="javascript:void(0)" class="delete-post" data-id={{this._id}}>
                         <span class="glyphicon glyphicon-trash"></span>
                     </a>
                   </div>
                   <!-- edit form -->
-                  <div class="collapse" data-position-id="{{_id}}">
+                  <div class="collapse" data-position-id="{{this._id}}">
                   <br>
                   <form class="form-inline" id="update-post">
                     <div class="form-group">
                       <label for="inputPosition" class="col-md-4 control-label">Position</label>
                       <div class="col-md-4">
-                        <input type="text" class="form-control" id="inputPosition" name="position_name" placeholder="Title" autofocus="" value="{{position_name}}">
+                        <input type="text" class="form-control" id="inputPosition" name="position_name" placeholder="Title" autofocus="" value="{{this.position_name}}">
                       </div>
                     </div>
 
                     <div class="form-group">
                       <label for="inputLocation" class="col-md-4 control-label">Job Location</label>
                       <div class="col-md-4">
-                        <input type="text" class="form-control" id="inputLocation" name="location" placeholder="City, State" autofocus="" value="{{location}}">
+                        <input type="text" class="form-control" id="inputLocation" name="location" placeholder="City, State" autofocus="" value="{{this.location}}">
                       </div>
                     </div>
 
                     <div class="form-group">
                       <label for="inputURL" class="col-md-4 control-label">Job Posting</label>
                       <div class="col-md-4">
-                        <input type="text" class="form-control" id="inputURL" name="job_url" placeholder="Paste URL" value="{{job_url}}">
+                        <input type="text" class="form-control" id="inputURL" name="job_url" placeholder="Paste URL" value="{{this.job_url}}">
                       </div>
                     </div>
 
@@ -253,7 +250,7 @@
                       <div class="col-md-4">
                         <div class="radio">
                           <label>
-                            <input type="radio" name="referral" id="yes" value="true" checked="" value="{{referral}}">
+                            <input type="radio" name="referral" id="yes" value="true" checked="" value="{{this.referral}}">
                             Yes
                           </label>
                         </div>
@@ -267,11 +264,13 @@
                     </div>
                     <div class="form-group">
                       <input type="submit" class="btn btn-block btn-default" value="Update">
+                      <a class="btn btn-default cancel-edit">Cancel</a>
                     </div>
                   </form>
                 </div>
                 </div>
               </div>
+            {{/each}}
             <!-- </div> -->
           </div>
         </div>

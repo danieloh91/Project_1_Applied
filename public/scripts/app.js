@@ -3,17 +3,27 @@ var jobsTemplate;
 var $jobsList;
 
 $(document).ready(function() {
-  var jobHtml = $('#job-template').html(),
-      baseUrl = '/api/positions';
-      jobsTemplate = Handlebars.compile(jobHtml);
+  var companyHtml = $('#company-template').html(),
+      baseUrl = '/api/companies';
+      companiesTemplate = Handlebars.compile(companyHtml);
 
   $jobsList = $('#job-postings');
 
-  //show jobs
-  $.get('/api/positions').success(function(positions) {
-    positions.forEach(function(position) {
-      console.log('calling GET Request', position);
-      render(position);
+  // //show jobs
+  // $.get('/api/positions').success(function(positions) {
+  //   positions.forEach(function(position) {
+  //     console.log('calling GET Request', position);
+  //     render(position);
+  //   });
+  // });
+
+  //show companies
+  $.get('/api/companies').success(function(companies) {
+    // empty out the #job-postings ONLY when rerendering EVERYTHING (existing company, new position)
+    // prepend when adding a single new company (new company, new position)
+    companies.forEach(function(company) {
+      console.log('calling GET Request', company);
+      renderCompany(company);
     });
   });
 
@@ -34,10 +44,19 @@ $(document).ready(function() {
   //edit job post
   $jobsList.on('click', '.update-post', function(e) {
     e.preventDefault();
-    console.log('it clicks');
     var id= $(this).closest('.post').data('position-id');
     console.log('id', id);
-    $('.collapse').show();
+
+    var toggle_switch = $(this);
+    $('.collapse').toggle(function(){
+    	if($(this).css('display')=='none'){
+    		toggle_switch.html();//change the button label to be 'Show'
+    	}else{
+    		toggle_switch.html();//change the button label to be 'Hide'
+    	}
+    });
+
+    // $('.collapse').show();
     $('#update-post').on("submit", function(e) {
       e.preventDefault();
       $.ajax({
@@ -48,6 +67,27 @@ $(document).ready(function() {
       });
       $('.collapse').hide();
     });
+    $('.cancel-edit').on('click', function(e) {
+      $('.collapse').hide();
+    });
+
+    //show companies in drop down menu
+    // $('#select').change(function(){
+    //   var$dropdown = $(this);
+    //   console.log('test');
+    //
+    //   $.getJSON("jsondata.data/json", function(data){
+    //     var key = $dropdown.val();
+    //     var vals = [];
+    //     switch(key) {
+    //       case 'companies':
+    //         vals = data.company_name;
+    //         break;
+    //     }
+    //   });
+    // });
+
+
   });
 
   //delete job post
@@ -78,7 +118,12 @@ function handleDeletePositionSuccess(data) {
   $('div[data-position-id=' + deletedPositionId + ']').remove();
 }
 
-function render(position) {
-  var html = jobsTemplate(position);
+// function render(position) {
+//   var html = companiesTemplate(position);
+//   $jobsList.prepend(html);
+// }
+
+function renderCompany(company) {
+  var html = companiesTemplate(company);
   $jobsList.prepend(html);
 }
