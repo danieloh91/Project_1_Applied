@@ -24,3 +24,13 @@ h1 {
 .submit {
   float: right;
 }
+
+.pull-right a {
+  cursor: pointer;
+  display: inline-block;
+  margin: 3px 5px 0 0;
+  opacity: 0.2;
+}
+.pull-right a:hover {
+  opacity: 0.5;
+}

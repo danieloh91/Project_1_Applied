@@ -6,7 +6,6 @@ var mongoose = require("mongoose"),
       location: String,
       referral: Boolean,
       job_url: String,
-      company: String,
       company_id: {type: mongoose.Schema.Types.ObjectId, ref: 'Company'}
     });
 

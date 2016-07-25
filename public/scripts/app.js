@@ -3,7 +3,8 @@ var jobsTemplate;
 var $jobsList;
 
 $(document).ready(function() {
-  var jobHtml =$('#job-template').html();
+  var jobHtml = $('#job-template').html(),
+      baseUrl = '/api/positions';
       jobsTemplate = Handlebars.compile(jobHtml);
 
   $jobsList = $('#job-postings');
@@ -30,7 +31,36 @@ $(document).ready(function() {
     $(this).trigger("reset");
   });
 
+  //edit job post
+  $jobsList.on('click', '.edit-post', function(e) {
+    e.preventDefault();
+    console.log('it clicks');
+    var id= $(this).closest('.post').data('position-id');
+    console.log('id', id);
+
+  });
+
+
+  //delete job post
+  $jobsList.on('click', '.delete-post', function(e) {
+    e.preventDefault();
+    var id= $(this).closest('.post').data('position-id');
+    console.log('id', id);
+    $.ajax({
+      method: 'DELETE',
+      url: '/api/positions/' + id,
+      success: handleDeletePositionSuccess
+    });
+  });
+
 });
+
+function handleDeletePositionSuccess(data) {
+  var deletedPositionId = data._id;
+  console.log(data._id);
+  $('div[data-position-id=' + deletedPositionId + ']').remove();
+}
+
 
 // function render() {
 //   $jobsList.empty();
