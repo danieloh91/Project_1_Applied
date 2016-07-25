@@ -24,6 +24,7 @@ $(document).ready(function() {
     companies.forEach(function(company) {
       console.log('calling GET Request', company);
       renderCompany(company);
+      renderDropdown(companies);
     });
   });
 
@@ -122,6 +123,15 @@ function handleDeletePositionSuccess(data) {
 //   var html = companiesTemplate(position);
 //   $jobsList.prepend(html);
 // }
+
+function renderDropdown(companies) {
+  var dropdownHtml = $('#companies').html();
+  var dropdownTemplate = Handlebars.compile(dropdownHtml);
+  var renderedDropdown = dropdownTemplate({
+    companies: companies
+  });
+  $('#company_name').html(renderedDropdown);
+}
 
 function renderCompany(company) {
   var html = companiesTemplate(company);

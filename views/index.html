@@ -132,13 +132,16 @@
             <fieldset>
               <legend>New Job Information</legend>
 
-              <div class="form-group">
-                <label for="inputExistingCompany" class="col-md-4 control-label">Company</label>
-                <div class="col-md-4">
-                  <select class="form-control" id="select">
-                    <option value="{{company_name}}"></option>
-                  </select>
-                </div>
+              <div class="dropdown">
+                <label>Company</label>
+                <br>
+                <select id="company_name">
+                  <script id="companies" type="text/x-handlebars-template">
+                    {{#each companies}}
+                    <option value="{{this._id}}">{{this.company_name}}</option>
+                    {{/each}}
+                  </script>
+                </select>
               </div>
 
               <div class="form-group">
