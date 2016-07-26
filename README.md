@@ -1,6 +1,8 @@
 # Project_1_Applied
 Save jobs onto this web app to keep track of which positions have been applied to.
 
+* Heroku Link - <a href="https://aqueous-reef-19027.herokuapp.com/" target="_blank">Applied</a>
+
 # Technologies Used
 * HTML/CSS
 * Bootstrap
@@ -8,6 +10,8 @@ Save jobs onto this web app to keep track of which positions have been applied t
 * jQuery
 * Express
 * Mongoose/MongoDB
+* RESTFUL API
+* Heroku
 
 # Existing Features
 * Can save company and job information in a list
