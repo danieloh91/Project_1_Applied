@@ -6,7 +6,7 @@ var mongoose = require("mongoose"),
       location: String,
       referral: Boolean,
       job_url: String,
-      company_id: {type: mongoose.Schema.Types.ObjectId, ref: 'Company'}
+      _company: {type: mongoose.Schema.Types.ObjectId, ref: 'Company'}
     });
 
 var Position = mongoose.model('Position', PositionSchema);

@@ -31,6 +31,8 @@ app.get('/api/companies', controllers.positionsCompanies.index);
 
 app.get('/api/companies/:companyId', controllers.positionsCompanies.show);
 
+app.put('/api/companies/:companyId', controllers.positionsCompanies.update);
+
 app.listen(process.env.PORT || 3000, function () {
   console.log('Express server is running on http://localhost:3000/');
 });

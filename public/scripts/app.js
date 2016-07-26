@@ -34,10 +34,23 @@ $(document).ready(function() {
     e.preventDefault();
     var formData = $(this).serialize();
     console.log('retreiving formData', formData);
-    $.post('/api/positions', formData, function(position) {
-      console.log('position after POST', position);
-      // allPositions.push(position);
-      render(position);
+    $.post('/api/positions', formData, function(company) {
+      console.log('position after POST', company);
+      renderCompany(company);
+    });
+    $(this).trigger("reset");
+  });
+
+  // add to existing job post
+  $('#addon-job-form').on("submit", function(e) {
+    var id=$('#company_name').val();
+    console.log(id);
+    e.preventDefault();
+    $.ajax({
+      method: 'PUT',
+      url: '/api/companies/' + id,
+      data: $(this).serialize(),
+      success: handleEditCompanySuccess
     });
     $(this).trigger("reset");
   });
@@ -71,24 +84,6 @@ $(document).ready(function() {
     $('.cancel-edit').on('click', function(e) {
       $('.collapse').hide();
     });
-
-    //show companies in drop down menu
-    // $('#select').change(function(){
-    //   var$dropdown = $(this);
-    //   console.log('test');
-    //
-    //   $.getJSON("jsondata.data/json", function(data){
-    //     var key = $dropdown.val();
-    //     var vals = [];
-    //     switch(key) {
-    //       case 'companies':
-    //         vals = data.company_name;
-    //         break;
-    //     }
-    //   });
-    // });
-
-
   });
 
   //delete job post
@@ -105,11 +100,18 @@ $(document).ready(function() {
 
 });
 
+function handleEditCompanySuccess(data){
+  var editedCompanyId = data.id;
+  $.get('/api/companies/' + editedCompanyId, function(data){
+    renderCompany(data);
+  });
+}
+
 function handleEditPositionSuccess(data) {
   var editedPositionId = data._id;
-  $.get('/api/positions/' + editedPositionId, function(data) {
+  $.get('/api/companies/' + editedPositionId, function(data) {
     $('div[data-position-id=' + editedPositionId + ']').remove();
-    render(data);
+    renderCompany(data);
   });
 }
 
@@ -134,6 +136,7 @@ function renderDropdown(companies) {
 }
 
 function renderCompany(company) {
+  $jobsList.empty();
   var html = companiesTemplate(company);
   $jobsList.prepend(html);
 }
