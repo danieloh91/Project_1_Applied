@@ -66,8 +66,6 @@ function create(req, res) {
       db.Company.findById(company._id, function(err, company){
         if (err) res.json(err);
         db.Position.findById(position._id, function(err, position){
-          // console.log(position + " " + position._id);
-          // console.log(company + " " + company._id);
           company._positions.push(position._id);
           position._company = company._id;
           company.save();

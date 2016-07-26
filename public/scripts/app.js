@@ -1,5 +1,4 @@
 var jobsTemplate;
-// var allPositions = [];
 var $jobsList;
 
 $(document).ready(function() {
@@ -7,7 +6,7 @@ $(document).ready(function() {
       baseUrl = '/api/companies';
       companiesTemplate = Handlebars.compile(companyHtml);
 
-  $jobsList = $('#job-postings');
+      $jobsList = $('#job-postings');
 
   // //show jobs
   // $.get('/api/positions').success(function(positions) {
@@ -136,7 +135,7 @@ function renderDropdown(companies) {
 }
 
 function renderCompany(company) {
-  $jobsList.empty();
+  // $jobsList.empty();
   var html = companiesTemplate(company);
   $jobsList.prepend(html);
 }
