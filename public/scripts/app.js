@@ -16,13 +16,13 @@ $(document).ready(function() {
   //   });
   // });
 
-  $('.add-job').on('click', function(e){
+  $('.add-job').click(function(e){
     e.preventDefault();
     $('.add-job').hide();
     $('.question').show();
   });
 
-  $('.add-yes').on('click', function(e){
+  $('.add-yes').click(function(e){
     e.preventDefault();
     $('.question').hide();
     $('.new-job-form').show();

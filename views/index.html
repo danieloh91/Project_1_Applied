@@ -36,18 +36,28 @@
       <button type="submit" class="btn btn-primary add-job">Add New Job</button>
     </div>
     <!-- new or existing company -->
-    <div class="col-md-4 col-md-4-offset">
-      <div class="question">
-        <h3>Adding new company?</h3>
-        <div class="col-md-8 col-md-2-offset">
-          <div class="btn-group btn-group-justified">
-            <a class="btn btn-default add-yes">Yes</a>
-            <a class="btn btn-default add-no">No</a>
-            <a class="btn btn-default add-cancel">Cancel</a>
-          </div>
+    <section id='add-question-info' class="container question" display="none">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <form class="form-horizontal" id='add-question'>
+            <fieldset>
+              <!-- add new company form -->
+              <legend>Adding New Company?</legend>
+
+              <div class="form-group">
+                <div class="col-md-8 col-md-2-offset">
+                  <div class="btn-group btn-group-justified">
+                    <a class="btn btn-default add-yes">Yes</a>
+                    <a class="btn btn-default add-no">No</a>
+                    <a class="btn btn-default add-cancel">Cancel</a>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </form>
         </div>
       </div>
-    </div>
+    </section>
 
     <section id='new-job-info-form' class="container">
       <div class="row">

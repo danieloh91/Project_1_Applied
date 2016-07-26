@@ -6,6 +6,7 @@ Save jobs onto this web app to keep track of which positions have been applied t
 * Bootstrap
 * Javascript
 * jQuery
+* Express
 * Mongoose/MongoDB
 
 # Existing Features
@@ -16,3 +17,9 @@ Save jobs onto this web app to keep track of which positions have been applied t
 * Add positions to existing companies
 * Transform forms into modals
 * Add user accounts
+
+Wireframe
+![alt tag](http://i.imgur.com/2VnSSNK.jpg)
+
+ERD and feasibility check
+![alt tag](http://i.imgur.com/m46VX65.jpg)
