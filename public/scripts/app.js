@@ -149,5 +149,6 @@ function renderDropdown(companies) {
 function renderCompany(company) {
   // $jobsList.empty();
   var html = companiesTemplate(company);
+  console.log('html: ', html);
   $jobsList.prepend(html);
 }
