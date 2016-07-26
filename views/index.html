@@ -36,7 +36,7 @@
       <button type="submit" class="btn btn-primary add-job">Add New Job</button>
     </div>
     <!-- new or existing company -->
-    <section id='add-question-info' class="container question" display="none">
+    <section id='add-question-info' class="container question">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
           <form class="form-horizontal" id='add-question'>
@@ -215,7 +215,7 @@
               <h3 class="company_name" data-company-id="{{_id}}">Company: {{company_name}}</h3>
               <div class="comp-info">
                 <span class="hq">HQ: {{hq}}</span>
-                <span class="hq">Founded: {{founded}}</span>
+                <span class="founded">Founded: {{founded}}</span>
               </div>
             </div>
             <!-- <div class="button to toggle the hidden"> -->
@@ -225,7 +225,7 @@
                 <span class="location">Location: {{this.location}}</span>
                 <div class="">
                   <span class="referral">Referral: {{this.referral}}</span>
-                  <a target="_blank" href="{{this.job_url}}">Job Posting Link</a>
+                  <a target="_blank" href="{{this.job_url}}" class="job-link">Job Posting Link</a>
                   <div class="pull-right">
                     <a href="javascript:void(0)" class="update-post" data-toggle="collapse" data-id={{this._id}}>
                       <span class="glyphicon glyphicon-pencil"></span>

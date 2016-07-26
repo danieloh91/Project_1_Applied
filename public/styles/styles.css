@@ -34,3 +34,11 @@ h1 {
 .pull-right a:hover {
   opacity: 0.5;
 }
+
+.location {
+  float: right;
+}
+
+.founded {
+  float: right;
+}

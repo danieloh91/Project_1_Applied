@@ -10,7 +10,7 @@ function index(req, res) {
     res.json(company);
   });
 }
-
+// initial attempt
 // function createPosition(res, err, company, position) {
 //   if (err) res.json(err);
 //   else {
