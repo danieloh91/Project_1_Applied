@@ -16,6 +16,18 @@ $(document).ready(function() {
   //   });
   // });
 
+  $('.add-job').on('click', function(e){
+    e.preventDefault();
+    $('.add-job').hide();
+    $('.question').show();
+  });
+
+  $('.add-yes').on('click', function(e){
+    e.preventDefault();
+    $('.question').hide();
+    $('.new-job-form').show();
+  });
+
   //show companies
   $.get('/api/companies').success(function(companies) {
     // empty out the #job-postings ONLY when rerendering EVERYTHING (existing company, new position)
