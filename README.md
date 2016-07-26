@@ -1,7 +1,7 @@
 # Project_1_Applied
 Save jobs onto this web app to keep track of which positions have been applied to.
 
-* Heroku Link - <a href="https://aqueous-reef-19027.herokuapp.com/" target="_blank">Applied</a>
+* Heroku Link - <a target="_blank" href="https://aqueous-reef-19027.herokuapp.com/">Applied</a>
 
 # Technologies Used
 * HTML/CSS
