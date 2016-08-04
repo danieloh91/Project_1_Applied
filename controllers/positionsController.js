@@ -5,11 +5,14 @@ function index(req, res) {
   db.Position.find({})
     .populate('_company')
     .exec(function (err, company) {
+    /* TODO: this err condition calls a handleError function, but this function is not defined -jc */
     if (err) return handleError(err);
+    /* TODO: Please remove commented code form production versions of your project -jc */
     //console.log('Gigantic Position with attached Company: ', company);
     res.json(company);
   });
 }
+/* TODO: Please remove commented code form production versions of your project -jc */
 // initial attempt
 // function createPosition(res, err, company, position) {
 //   if (err) res.json(err);
@@ -76,7 +79,7 @@ function create(req, res) {
   });
 
 
-
+  /* TODO: Please remove commented code form production versions of your project -jc */
   // console.log('company: ', company);
   // company.save();
   // position.save();
@@ -118,8 +121,10 @@ function create(req, res) {
 }
 
 function show(req, res) {
+  /* TODO: consider assigning req.params.positionId to a variable then passing it in to your db call for easier reading and flow -jc */
   db.Position.findById(req.params.positionId, function(err, succ) {
     if (err) {
+      /* TODO: return this console log to properly escape the db call after hitting an error -jc */
       console.log(err);
     }
     res.json(succ);
@@ -130,6 +135,7 @@ function destroy(req, res) {
   var positionId = req.params.positionId;
   db.Position.findOneAndRemove({_id: positionId}, function(err, succ) {
     if (err) {
+      /* TODO: return this console log to properly escape the db call after hitting an error -jc */
       console.log(err);
     }
     res.json(succ);
@@ -143,6 +149,7 @@ function update(req, res) {
     if (err) {
       console.log(err);
     } else {
+      /* TODO: Please remove commented code form production versions of your project -jc */
       // succ.position_name = req.body.position_name;
       // succ.location = req.body.location;
       // succ.referral = req.body.referral;

@@ -21,6 +21,8 @@ function create(req, res){
       succ
         .populate('_positions')
         .exec(function(err, succ){
+          /* TODO: Add error handling -jc */
+          /* TODO: Please keep debugging code out of production versions of your project -jc */
           console.log("SUCCESS:\n"+succ+'\n');
           res.json(succ);
         });

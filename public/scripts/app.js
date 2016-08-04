@@ -19,7 +19,7 @@ $(document).ready(function() {
 
 
   /* TODO: Consider moving the callback function to an external, named function for a smaller and easier to read document ready section -jc */
-  /* TODO: Consider giving the function a name that informs the developer what the cb does.
+  /* TODO: Consider giving the function a name that informs the developer what the cb does. -jc */
   $('.add-job').click(function(e){
     e.preventDefault();
     $('.add-job').hide();
