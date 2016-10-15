@@ -1,6 +1,7 @@
 var mongoose = require("mongoose"),
     Schema = mongoose.Schema,
     Company = require("./company.js"),
+    /* Some people just want to watch the world burn. -jc */
     PositionSchema = new Schema({
       position_name: String,
       location: String,
