@@ -1,6 +1,9 @@
 var jobsTemplate;
 var $jobsList;
 
+angular
+  .module('applied', []);
+
 $(document).ready(function() {
   var companyHtml = $('#company-template').html(),
       baseUrl = '/api/companies';
