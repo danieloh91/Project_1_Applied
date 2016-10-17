@@ -1,7 +1,6 @@
 var express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
-    db = require('./models'),
     controllers = require('./controllers'),
     mongoose = require('mongoose'),
 
@@ -26,6 +25,10 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+// require User model
+var db = require('./models'),
+    User = db.User;
 
 // passport config
 passport.use(new LocalStrategy(User.authenticate()));
