@@ -1,7 +1,6 @@
 var express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
-    controllers = require('./controllers'),
     mongoose = require('mongoose'),
 
     cookieParser = require('cookie-parser'),
@@ -28,6 +27,7 @@ app.use(passport.session());
 
 // require User model
 var db = require('./models'),
+    controllers = require('./controllers'),
     User = db.User;
 
 // passport config
@@ -37,6 +37,24 @@ passport.deserializeUser(User.deserializeUser());
 
 app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');
+});
+
+// AUTH ROUTES
+// show signup view
+app.get('/signup', function signuppage (req, res) {
+  res.sendFile(__dirname + '/views/signup.html'); // you can also use res.sendFile
+});
+
+// sign up new user, then log them in
+// hashes and salts password, saves new user to db
+app.post('/signup', function (req, res) {
+  User.register(new User({ username: req.body.username }), req.body.password,
+    function (err, newUser) {
+      passport.authenticate('local')(req, res, function() {
+        res.redirect('/');
+      });
+    }
+  );
 });
 
 // JSON API endpoints
