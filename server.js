@@ -14,7 +14,6 @@ app.use(express.static(__dirname + '/public'));
 
 app.use('/vendor', express.static(__dirname + '/bower_components'));
 
-
 // middleware for auth
 app.use(cookieParser());
 app.use(session({
@@ -42,20 +41,52 @@ app.get('/', function homepage (req, res) {
 // AUTH ROUTES
 // show signup view
 app.get('/signup', function signuppage (req, res) {
-  res.sendFile(__dirname + '/views/signup.html'); // you can also use res.sendFile
+  if (req.user) {
+    return res.redirect('/');
+  }
+  res.sendFile(__dirname + '/views/signup.html');
 });
 
 // sign up new user, then log them in
 // hashes and salts password, saves new user to db
 app.post('/signup', function (req, res) {
-  User.register(new User({ username: req.body.username }), req.body.password,
+  if (!req.user) {
+    return res.redirect('/');
+  }
+  var new_user = new User({username: req.body.username});
+  User.register(new_user, req.body.password,
     function (err, newUser) {
       passport.authenticate('local')(req, res, function() {
+        console.log('successful signup');
         res.redirect('/');
       });
     }
   );
 });
+
+// show login view
+app.get('/login', function (req, res) {
+  if (req.user) {
+    return res.redirect('/');
+  }
+  res.sendFile(__dirname + '/views/login.html');
+});
+
+// log in user
+app.post('/login', passport.authenticate('local'), function (req, res) {
+  console.log(req.user);
+  res.redirect('/');
+});
+
+// log out user
+app.get('/logout', function (req, res) {
+  console.log("BEFORE logout", JSON.stringify(req.user));
+  req.logout();
+  console.log("AFTER logout", JSON.stringify(req.user));
+  res.redirect('/');
+});
+
+//TODO: figure out how to sign up different users
 
 // JSON API endpoints
 app.get('/api', controllers.api.index);
